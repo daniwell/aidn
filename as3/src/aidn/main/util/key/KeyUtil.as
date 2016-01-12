@@ -64,15 +64,15 @@ package aidn.main.util.key
 		/// KEY UP (ADD)
 		public static function addKeyUpFunction ( func :Function ) :void
 		{
-			if (! (_keyDownFuncs[func] is Function)) _keyDownFuncs[func] = func;
+			if (! (_keyUpFuncs[func] is Function)) _keyUpFuncs[func] = func;
 		}
 		/// KEY UP (REMOVE)
 		public static function removeKeyUpFunction ( func :Function ) :void
 		{
-			if ( _keyDownFuncs[func] is Function )
+			if ( _keyUpFuncs[func] is Function )
 			{
-				_keyDownFuncs[func] = null;
-				delete _keyDownFuncs[func];
+				_keyUpFuncs[func] = null;
+				delete _keyUpFuncs[func];
 			}
 		}
 		

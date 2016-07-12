@@ -4,7 +4,7 @@ package aidn.air.controller.net
 	import flash.events.DatagramSocketDataEvent;
 	import flash.events.EventDispatcher;
 	import flash.utils.ByteArray;
-	import org.tuio.osc.OSCMessage;
+	//import org.tuio.osc.OSCMessage;
 	
 	/**
 	 * @require http://code.google.com/p/tuio-as3/
@@ -31,10 +31,12 @@ package aidn.air.controller.net
 			
 		}
 		/* 送信 (OSCMessage) */
+		/*
 		public function sendOSCMessage ( message :OSCMessage, targetIP :String, targetPort :int ) :void
 		{
 			Debug.log(this, "Method 'sendOSCMessage' is not used.");
 		}
+		*/
 		
 		
 		/* 接続を閉じる */

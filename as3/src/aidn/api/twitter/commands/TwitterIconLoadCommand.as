@@ -10,7 +10,7 @@ package aidn.api.twitter.commands
 	
 	public class TwitterIconLoadCommand extends LoaderCommand
 	{
-		private const PATH :String = "http://aidn.jp/cgi/api/util/getcontents.php";
+		private const PATH :String = "https://aidn.jp/cgi/api/util/getcontents.php";
 		
 		private var _bitmap     :Bitmap;
 		private var _bitmapData :BitmapData;

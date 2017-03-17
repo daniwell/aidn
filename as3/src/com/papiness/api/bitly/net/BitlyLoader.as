@@ -109,7 +109,7 @@
 			s += '}';
 			*/
 			
-			var obj :Object = JSON.decode( String(_urlloader.data) );
+			var obj :Object = com.adobe.serialization.json.JSON.decode( String(_urlloader.data) );
 			
 			if ( obj.statusCode == "OK" )
 			{

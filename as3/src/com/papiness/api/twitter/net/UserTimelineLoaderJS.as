@@ -193,7 +193,7 @@
 		private function _completeHandler ( evt :Event ) :void
 		{
 			var obj :Object;
-			obj = JSON.decode(evt.target.data);
+			obj = com.adobe.serialization.json.JSON.decode(evt.target.data);
 				
 			parseObject( obj );
 			dispatchEvent( evt );

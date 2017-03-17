@@ -1,4 +1,4 @@
-package aidn.api.twitter.commands 
+﻿package aidn.api.twitter.commands 
 {
 	import aidn.api.APIBaseCommand;
 	import aidn.api.twitter.constant.TwitterMethod;
@@ -20,7 +20,7 @@ package aidn.api.twitter.commands
 		override protected function _parseData ( ) :Boolean 
 		{
 			try {
-				var json :Object = JSON.decode(data);
+				var json :Object = com.adobe.serialization.json.JSON.decode(data);
 			} catch ( e :* ) {
 				trace(this, "parse error");
 				return false;

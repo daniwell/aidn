@@ -3,14 +3,10 @@ package aidn.air.controller.net
 	import aidn.main.util.Debug;
 	import flash.events.DatagramSocketDataEvent;
 	import flash.events.Event;
-	import flash.events.EventDispatcher;
 	import flash.events.IOErrorEvent;
 	import flash.net.DatagramSocket;
 	import flash.utils.ByteArray;
 	
-	/**
-	 * @require http://code.google.com/p/tuio-as3/
-	 */
 	
 	public class UDPSocketDesktopManager extends AbstractUDPSocketManager
 	{

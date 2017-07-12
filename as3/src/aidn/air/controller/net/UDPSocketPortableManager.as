@@ -4,10 +4,10 @@ package aidn.air.controller.net
 	import be.aboutme.nativeExtensions.udp.UDPSocket;
 	import flash.events.DatagramSocketDataEvent;
 	import flash.utils.ByteArray;
-	import org.tuio.osc.OSCMessage;
 	
 	/**
-	 * @require http://code.google.com/p/tuio-as3/
+	 * * AIR3.8 以降はランタイムに含まれるため、不要
+	 * 
 	 * @require https://github.com/wouterverweirder/AIR-Mobile-UDP-Extension/blob/master/ane/UDPSocket.ane
 	 * 
 	 * 

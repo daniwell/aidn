@@ -34,7 +34,7 @@ package aidn.main.util
 		{
 			_stage = stage;
 			
-			_ta = new TextField();
+			if (! _ta) _ta = new TextField();
 			if (format) _ta.defaultTextFormat = format;
 			_ta.autoSize     = "left";
 			_ta.textColor    = textColor;

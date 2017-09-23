@@ -9,6 +9,7 @@ package aidn.main.commands
 	import flash.net.URLRequest;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
+	import flash.utils.ByteArray;
 	
 	
 	public class LoaderCommand extends CommandBase
@@ -18,10 +19,13 @@ package aidn.main.commands
 		private var _urlReq  :URLRequest;
 		private var _context :LoaderContext;
 		
+		private var _data :ByteArray;
+		
 		public function LoaderCommand ( url :*, context :LoaderContext = null ) 
 		{
-			if (url is URLRequest)	_urlReq = url;
-			else					_urlReq = new URLRequest(url);
+			if (url is ByteArray)		_data   = url;
+			else if (url is URLRequest)	_urlReq = url;
+			else						_urlReq = new URLRequest(url);
 			_context = context;
 		}
 		
@@ -34,7 +38,10 @@ package aidn.main.commands
 			
 			_addEvents();
 			
-			_loader.load(_urlReq, _context);
+			if (_data)
+				_loader.loadBytes(_data);
+			else
+				_loader.load(_urlReq, _context);
 		}
 		override public function cancel ( ) :void 
 		{

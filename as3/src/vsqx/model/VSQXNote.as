@@ -15,11 +15,22 @@ package vsqx.model
 		public var lyric :String;
 		
 		public function VSQXNote (xml :XML, beat :Number = 500) 
-		{
-			position = xml.posTick;
-			duration = xml.durTick;
-			note     = xml.noteNum;
-			lyric    = xml.lyric;
+		{	
+			if (0 < xml.durTick)
+			{
+				position = xml.posTick;
+				duration = xml.durTick;
+				note     = xml.noteNum;
+				lyric    = xml.lyric;
+			}
+			else
+			{
+				position = xml.t;
+				duration = xml.dur;
+				note     = xml.n;
+				lyric    = xml.y;
+			}
+			/// trace(position, lyric, duration, note);
 			
 			time = position * beat / 480;
 		}		

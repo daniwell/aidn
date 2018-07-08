@@ -20,18 +20,30 @@ package vsqx.model
 		
 		private function _init (xml :XML) :void
 		{
-			bpm  = xml.masterTrack.tempo.bpm / 100;
+			var t :* = xml.masterTrack.tempo;
+			
+			if (0 < t.bpm)	bpm = t.bpm / 100;
+			else			bpm = t.v / 100;
 			beat = 60000 / bpm;
 			
 			trace(bpm, beat);
 			
-			var len :int = xml.vsTrack.musicalPart.note.length();
+			var len :int;
+			
+			var part :* = xml.vsTrack.musicalPart;
+			
+			/// trace(part, part == null, part == undefined);
+			if (part == undefined) part = xml.vsTrack.vsPart;
+			
+			
+			len = part.note.length();
+			
 			noteLen = len;
 			
 			trace("len", len);
 			for (var i :int = 0; i < len; i ++)
 			{
-				var x :XML = xml.vsTrack.musicalPart.note[i];
+				var x :XML = part.note[i];
 				notes[i] = new VSQXNote(x, beat);
 			}
 		}

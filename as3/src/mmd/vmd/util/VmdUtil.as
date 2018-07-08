@@ -53,11 +53,32 @@ package mmd.vmd.util
 		public static function getQuaternion ( rx :Number = 0, ry :Number = 0, rz :Number = 0 ) :Vector3D
 		{
 			var mat3d :Matrix3D = new Matrix3D();
-			if (rx != 0) mat3d.prependRotation(rx, Vector3D.X_AXIS);
-			if (ry != 0) mat3d.prependRotation(ry, Vector3D.Y_AXIS);
-			if (rz != 0) mat3d.prependRotation(rz, Vector3D.Z_AXIS);
+			if (rx != 0) mat3d.prependRotation( rx, Vector3D.X_AXIS);
+			if (ry != 0) mat3d.prependRotation(-ry, Vector3D.Y_AXIS);
+			if (rz != 0) mat3d.prependRotation(-rz, Vector3D.Z_AXIS);
 			
 			return mat3d.decompose(Orientation3D.QUATERNION)[1];
+		}
+		
+		public static function getQuaternionX (pitch :Number, yaw :Number, roll :Number) :Vector3D
+		{
+			/// 座標系
+			yaw  = -  yaw;
+			roll = - roll;
+			
+			var cosY :Number = Math.cos(yaw / 2);
+			var sinY :Number = Math.sin(yaw / 2);
+			var cosP :Number = Math.cos(pitch / 2);
+			var sinP :Number = Math.sin(pitch / 2);
+			var cosR :Number = Math.cos(roll / 2);
+			var sinR :Number = Math.sin(roll / 2);
+			
+			return new Vector3D(
+				cosR * sinP * cosY + sinR * cosP * sinY,
+				cosR * cosP * sinY - sinR * sinP * cosY,
+				sinR * cosP * cosY - cosR * sinP * sinY,
+				cosR * cosP * cosY + sinR * sinP * sinY
+			);
 		}
 		
 		/// クォータニオンを取得
@@ -70,9 +91,9 @@ package mmd.vmd.util
 			
 			var list :Array = [];
 			
-			if (rx != 0) list.push(_quatRotate(axisX, rx));
-			if (ry != 0) list.push(_quatRotate(axisY, ry));
-			if (rz != 0) list.push(_quatRotate(axisZ, rz));
+			if (rx != 0) list.push(_quatRotate(axisX,  rx));
+			if (ry != 0) list.push(_quatRotate(axisY, -ry));
+			if (rz != 0) list.push(_quatRotate(axisZ, -rz));
 			
 			if (list.length == 0) return new Vector3D();
 			
@@ -100,6 +121,6 @@ package mmd.vmd.util
 				q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z
 			);
 		}
-		*/
+		//*/
 	}
 }

@@ -34,12 +34,24 @@ package aidn.main.util
 		{
 			_stage = stage;
 			
-			if (! _ta) _ta = new TextField();
+			if (! _ta) 
+			{
+				_ta = new TextField();
+				_stage.addChild(_ta);
+			}
 			if (format) _ta.defaultTextFormat = format;
 			_ta.autoSize     = "left";
 			_ta.textColor    = textColor;
 			_ta.mouseEnabled = selectable;
-			_stage.addChild(_ta);
+		}
+		
+		public static function removeDebugPanel () :void
+		{
+			if (_ta)
+			{
+				_ta.parent.removeChild(_ta);
+				_ta = null;
+			}
 		}
 		
 	}
